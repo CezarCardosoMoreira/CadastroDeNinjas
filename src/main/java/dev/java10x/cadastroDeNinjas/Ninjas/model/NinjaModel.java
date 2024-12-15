@@ -1,7 +1,12 @@
-package dev.java10x.cadastroDeNinjas.model;
+package dev.java10x.cadastroDeNinjas.Ninjas.model;
 
 
+
+import dev.java10x.cadastroDeNinjas.Missao.MissaoModel;
 import jakarta.persistence.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 //transforma uma classe em uma entidade do banco de dados
 @Entity
@@ -16,6 +21,14 @@ public class NinjaModel {
     private String email;
     private int idade;
 
+
+    @ManyToOne //@ManyToOne muitos ninja tem uma unica missão
+    @JoinColumn(name = "missoes_id") //juntar as duas colunas e cria foreing Key ou chave estrangeira
+    private MissaoModel missoes;
+
+
+
+
     public NinjaModel() {
     }
 
@@ -23,7 +36,10 @@ public class NinjaModel {
         this.nome = nome;
         this.email = email;
         this.idade = idade;
+
     }
+
+
 
     public String getNome() {
         return nome;
