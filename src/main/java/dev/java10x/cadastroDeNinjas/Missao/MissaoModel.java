@@ -1,13 +1,16 @@
 package dev.java10x.cadastroDeNinjas.Missao;
 
-
 import dev.java10x.cadastroDeNinjas.Ninjas.model.NinjaModel;
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
 @Entity
 @Table(name = "tb_mossoes")
+@NoArgsConstructor //Cria um construtor sem argumentos LOMBOK
+@AllArgsConstructor //Cria um construtor com todos os parametros LOMBOK
+@Data //Data Cria os GETTERS E SETTER LOMBOK
 public class MissaoModel {
 
     @Id
@@ -20,39 +23,4 @@ public class MissaoModel {
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjaModel;
 
-    public MissaoModel() {
-    }
-
-    public MissaoModel(String nome, String dificuldade, List<NinjaModel> ninjaModel) {
-
-        this.nome = nome;
-        this.dificuldade = dificuldade;
-        this.ninjaModel = ninjaModel;
-    }
-
-
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDificuldade() {
-        return dificuldade;
-    }
-
-    public void setDificuldade(String dificuldade) {
-        this.dificuldade = dificuldade;
-    }
-
-    public List<NinjaModel> getNinjaModel() {
-        return ninjaModel;
-    }
-
-    public void setNinjaModel(List<NinjaModel> ninjaModel) {
-        this.ninjaModel = ninjaModel;
-    }
 }
